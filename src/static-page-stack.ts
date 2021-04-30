@@ -41,7 +41,7 @@ export class StaticPageStack extends cdk.Stack {
 
     const websiteBucket = new s3.Bucket(this, "WebsiteBucket", {
       websiteIndexDocument: "index.html",
-      websiteErrorDocument: "error.html",
+      websiteErrorDocument: "index.html",
       publicReadAccess: true,
       websiteRoutingRules: [
         {
