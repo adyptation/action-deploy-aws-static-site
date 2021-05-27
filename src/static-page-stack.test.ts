@@ -8,6 +8,7 @@ test("404 Routing Redirection Logic", () => {
     fullDomain: "sub.example.com",
     folder: "./images",
     stackName: "MyTestStack",
+    arn: undefined,
   });
   expectCDK(stack).to(
     haveResource("AWS::S3::Bucket", {

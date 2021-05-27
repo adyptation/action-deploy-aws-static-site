@@ -14,5 +14,5 @@ new StaticPageStack(app, `StaticPage`, {
   stackName: `StaticPage-${DOMAIN}`.split(".").join("-"),
   folder: FOLDER,
   fullDomain: DOMAIN,
-  arn: ARN
+  arn: ARN,
 });
