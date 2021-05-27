@@ -35,6 +35,9 @@ async function run(): Promise<void> {
       : path.join(`${process.env.GITHUB_WORKSPACE}`, raw_publish_dir);
     core.debug(`Publishing directory '${publish_dir}' to '${domain}'`); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
 
+    const arn: string = core.getInput("certificate")
+    core.debug(`Certificate ARN is ${arn}`)
+
     const awsCredentials = {
       AWS_ACCESS_KEY_ID,
       AWS_SECRET_ACCESS_KEY,
@@ -44,11 +47,13 @@ async function run(): Promise<void> {
       CDK_DEPLOY_REGION: "us-east-1",
       DOMAIN: domain,
       FOLDER: publish_dir,
+      ARN: arn,
     });
     execCDK("deploy --require-approval never", {
       ...awsCredentials,
       DOMAIN: domain,
       FOLDER: publish_dir,
+      ARN: arn,
     });
   } catch (error) {
     core.setFailed(error.message);

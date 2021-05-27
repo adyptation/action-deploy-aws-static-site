@@ -25,10 +25,12 @@ export class StaticPageStack extends cdk.Stack {
       stackName,
       folder,
       fullDomain,
+      arn,
     }: {
       stackName: string;
       folder: string;
       fullDomain: string;
+      arn: string;
     }
   ) {
     super(scope, id, { stackName, env });
@@ -37,7 +39,7 @@ export class StaticPageStack extends cdk.Stack {
     const domain = getDomain(fullDomain);
 
     const zone = getDNSZone(this, domain);
-    const certificate = getCertificate(this, fullDomain, zone);
+    const certificate = getCertificate(this, fullDomain, zone, arn);
 
     const websiteBucket = new s3.Bucket(this, "WebsiteBucket", {
       websiteIndexDocument: "index.html",

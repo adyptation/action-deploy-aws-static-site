@@ -14,6 +14,9 @@ inputs:
   publish_dir:
     required: true
     description: 'Local directory to be published as a static site'
+  certificate:
+    required: false
+    description: 'Optional pass-in arn string to re-use an existing certificate'
 runs:
   using: 'node12'
   main: 'dist/index.js'
