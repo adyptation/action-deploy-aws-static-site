@@ -30,7 +30,7 @@ export class StaticPageStack extends cdk.Stack {
       stackName: string;
       folder: string;
       fullDomain: string;
-      arn: string;
+      arn: string | undefined;
     }
   ) {
     super(scope, id, { stackName, env });

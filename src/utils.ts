@@ -30,7 +30,7 @@ export function getCertificate(
   scope: cdk.Stack,
   fullDomainName: string,
   zone: route53.IHostedZone,
-  arn: string
+  arn: string | undefined
 ): cloudfront.ViewerCertificate {
   let acmCert;
   // Check for arn string pass-in, if exists reuse it

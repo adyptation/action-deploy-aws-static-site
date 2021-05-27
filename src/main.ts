@@ -35,7 +35,7 @@ async function run(): Promise<void> {
       : path.join(`${process.env.GITHUB_WORKSPACE}`, raw_publish_dir);
     core.debug(`Publishing directory '${publish_dir}' to '${domain}'`); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
 
-    const arn: string = core.getInput("certificate")
+    const arn: string | undefined = core.getInput("certificate")
     core.debug(`Certificate ARN is ${arn}`)
 
     const awsCredentials = {
